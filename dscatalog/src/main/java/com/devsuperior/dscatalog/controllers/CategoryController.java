@@ -36,5 +36,14 @@ public class CategoryController {
                 .buildAndExpand(category.getId()).toUri();
         return  ResponseEntity.created(uri).body(category);
     }
-
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CategoryDTO>  update(@PathVariable long id , @RequestBody CategoryDTO category){
+        category = service.update(id,category);
+        return  ResponseEntity.ok().body(category);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
