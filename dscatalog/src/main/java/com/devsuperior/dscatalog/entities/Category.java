@@ -15,7 +15,7 @@ public class Category implements Serializable {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String Name;
+    private String name;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createAt;
@@ -24,7 +24,7 @@ public class Category implements Serializable {
 
     public Category(){}
     public Category(String name){
-        this.Name = name;
+        this.name = name;
     }
 
     public Long getId() {
@@ -32,11 +32,11 @@ public class Category implements Serializable {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public Instant getCreateAt() {
