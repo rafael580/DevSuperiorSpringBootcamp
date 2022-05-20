@@ -14,13 +14,13 @@ public class Category implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String name;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createAt;
+    private Instant createdAt;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createUpdateAt;
+    private Instant createdUpdateAt;
 
     public Category(){}
     public Category(String name){
@@ -28,7 +28,7 @@ public class Category implements Serializable {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
@@ -40,20 +40,20 @@ public class Category implements Serializable {
     }
 
     public Instant getCreateAt() {
-        return createAt;
+        return createdAt;
     }
 
     public Instant getCreateUpdateAt() {
-        return createUpdateAt;
+        return createdUpdateAt;
     }
 
     @PrePersist
     public void prePersist(){
-        createAt = Instant.now();
+        createdAt = Instant.now();
     }
     @PreUpdate
     public void preUpdate(){
-        createUpdateAt = Instant.now();
+        createdUpdateAt = Instant.now();
     }
 
     @Override
@@ -61,11 +61,11 @@ public class Category implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return Objects.equals(Id, category.Id);
+        return Objects.equals(id, category.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id);
+        return Objects.hash(id);
     }
 }
